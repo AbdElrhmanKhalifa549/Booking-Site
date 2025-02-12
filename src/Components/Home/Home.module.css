@@ -1,0 +1,43 @@
+.img3w{
+    width: calc(100% / 3 - 10px);
+    border-radius: 5px;
+    height : 240px
+}
+.warning {
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #FCEFCA;
+}
+.mainContainer{
+    width : 80%;
+    margin : 0 auto
+}
+.header {
+    background-image: url('/public/assets/header.png');
+    background-size : cover;
+    background-position: center center ;
+    width :100% ;
+    height : 500px;
+    border-radius:5px
+}
+.layer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    margin: auto;
+    padding: 0 2rem;
+    color: white;
+    text-align: center;
+}
+.minlayer{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+    padding: 5px;
+    color: white;
+}

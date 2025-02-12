@@ -1,0 +1,141 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --main-color : #2F80ED ;
+  --main-colorBg: #F2F2F2;
+  --nav-colortext: #333333;
+  --heading-color: #181818;
+  --footer-colorli: #4f4f4f;
+  --capitalize : capitalize ;
+}
+body {
+  font-family: 'SF Pro Display', sans-serif;
+}
+html{
+  scroll-behavior: smooth;
+}
+*{
+  box-sizing: border-box;
+  margin : 0 ; 
+  padding : 0 ;
+}
+h2,h3,h5 {
+  color:var(--heading-color)
+}
+footer {
+  margin-bottom: 0px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+footer ul,p{
+  color: var(--footer-colorli);
+  
+}
+li{
+  list-style:none;
+  cursor: pointer;
+}
+ol li{
+  list-style:auto
+}
+a{
+  text-decoration: none;
+  margin : 0 5px;
+  color: var(--nav-colortext);
+  text-transform:var(--capitalize)
+}
+.warning{
+  padding:10px;
+  color:var(--nav-colortext);
+  background-color: #FCEFCA;
+  display:flex;
+  border-radius: 5px
+
+}
+.warnicon{
+  margin: 0 5px;
+  transform: translateY(-10%);
+}
+
+.Bgb {
+  background-color : var(--main-color);
+}
+.Bgw{
+  background-color: var(--main-colorBg);
+  padding: 15px;
+  margin-bottom : 5px ;
+  border-radius:5px;
+}
+/* .p-5{
+  padding:5px
+} */
+.wd20{
+  width:20px
+} 
+.df{
+  display:flex 
+}
+.border{
+  border: 1px solid var(--main-colorBg);
+  border-radius: 5px;
+}
+img{
+  width:100%
+}  
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.w-img{
+  width: calc(100% / 4 - 10px)
+} 
+.mainc{
+  color : var(--main-color);
+  transform: rotate(-40deg);
+}
+button {
+  background-color: var(--main-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    border: transparent;
+
+}
+span {
+  color : var(--main-color)
+}
+.mb-5{
+  margin-bottom: 5rem;
+}
+.textCenter{
+  text-align:center
+}
+.reactIcon{
+  position: absolute;
+  transform: translate(50%, 50%);
+}
+.gold{
+  color:gold
+}
+svg{
+  display: inline-block
+}
+h1{
+  font-size:32px
+}
+h2{
+  font-size:28px;
+}
+h3{
+  font-size:24px;
+}
+input:not(.white) {
+  background-color : var(--main-colorBg);
+}
