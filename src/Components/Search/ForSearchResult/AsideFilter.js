@@ -56,8 +56,11 @@ export const AsideFilter = ({
               className="white"
               onChange={e => setinputSearch(e.target.value)}
               placeholder="eg. Beach westpalm"
-            />
-            <span className={style.esc (inputSearch==='')? "hidden": "block" }>X</span>
+              value={inputSearch}
+            />{
+              inputSearch===""? null:
+            <span onClick={()=>setinputSearch("")} className='absolute translate-x-1/4 translate-y-1/4 cursor-pointer'>X</span>
+            }
           </div>
         </div>
         <h3 className="mb p-5">Filter by</h3>

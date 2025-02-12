@@ -19,7 +19,7 @@ export const HotelDetails = async (prams) => {
             currency_code: 'EUR'
         },
         headers: {
-            'x-rapidapi-key': '1e3dc26e73msh14062b7b2737969p1f8df3jsn2fef04a91942',
+            'x-rapidapi-key': 'f94c0c9b9emsh2781ad4dbeb8cbfp130d62jsnd0a3d32a16b1',
             'x-rapidapi-host': 'booking-com15.p.rapidapi.com'
         }
       };
@@ -48,7 +48,7 @@ export const Description=async(prams)=>{
           languagecode: 'en-us'
         },
         headers: {
-          'x-rapidapi-key': '1e3dc26e73msh14062b7b2737969p1f8df3jsn2fef04a91942',
+          'x-rapidapi-key': 'f94c0c9b9emsh2781ad4dbeb8cbfp130d62jsnd0a3d32a16b1',
           'x-rapidapi-host': 'booking-com15.p.rapidapi.com'
         }
       };

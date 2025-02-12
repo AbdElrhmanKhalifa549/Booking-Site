@@ -26,23 +26,23 @@ return(<>
         <section className='mb-5'>
         <h2 className='mb-2'>Enjoy your dream vacation</h2>
         <p className='mb-2'>Plan and book our perfect trip with expert advice, travel tips, destination information and inspiration from us</p>
-        <div className='md:container min-md:text-center'>
-            <div className='ms:w-img mb'>
+        <div className='container'>
+            <div className='w-img mb'>
                 <figure ><img src={img.img1} alt="Australia" /></figure>
                 <h4>Australia</h4>
                 <p>2246 properties</p>
                 </div>
-            <div className='ms:w-img'>
+            <div className='w-img'>
                 <figure ><img src={img.img2} alt="Japan" /></figure>
                 <h4>Japan</h4>
                 <p>1278 properties</p>
                 </div>
-            <div className='ms:w-img'>
+            <div className='w-img'>
                 <figure ><img src={img.img3} alt="New Zealand" /></figure>
                 <h4>New Zealand</h4>
                 <p>480 properties</p>
                 </div>
-            <div className='ms:w-img'>
+            <div className='w-img'>
                 <figure><img src={img.img4} alt="Greece" /></figure>
                 <h4>Greece</h4>
                 <p>320 properties</p>

@@ -183,7 +183,7 @@ padding: 5px;
   transform: translateY(10%); 
   margin-right: 5px
 }
-.ese{
+span .ese{
   position: absolute;
     transform: translate(10%, 25%)
 }

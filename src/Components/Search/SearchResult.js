@@ -41,7 +41,7 @@ useEffect( ()=>{
     paginationpage()
      handleSearch(Destinat);
     console.log(getKeySort)
-},[])
+},[Destinat.sort])
 
 const getSortkey=e=>{
 
@@ -68,7 +68,7 @@ const handleSearch = useCallback(async (params) => {
 } finally {
   setLoading(false);
 }
-},[] );
+},[Destinat] );
  
 console.log(sortinput)
 
