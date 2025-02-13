@@ -9,10 +9,7 @@
     border-radius: 8px;
     background: #FCEFCA;
 }
-.mainContainer{
-    width : 80%;
-    margin : 0 auto
-}
+
 .header {
     background-image: url('/public/assets/header.png');
     background-size : cover;

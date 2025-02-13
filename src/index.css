@@ -87,6 +87,10 @@ img{
   width:100%
 }  
 
+.mainContainer{
+  width : 80%;
+  margin : 0 auto
+}
 
 .container {
   display: flex;
@@ -108,7 +112,7 @@ button {
     border: transparent;
 
 }
-span {
+span:not(.nospan) {
   color : var(--main-color)
 }
 .mb-5{

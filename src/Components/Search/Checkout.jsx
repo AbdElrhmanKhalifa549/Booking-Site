@@ -21,7 +21,7 @@ return (<>
     <section className='md:flex gap-3'>
       <div className='md:w-2/3 '>
         <div className='mb-4 rounded overflow-hidden'>
-          <div style={{color:'white'}} className='flex bg-cb p-2 gap-2'><div><AiFillSecurityScan/></div> <h4>Room1</h4> <p>2 adults, 1 double bed and 1 twin bed, Non-smoking</p></div>
+          <div style={{color:'white'}} className='flex bg-cb p-4 gap-2'><div><AiFillSecurityScan/></div> <h4>Room1</h4> <p>2 adults, 1 double bed and 1 twin bed, Non-smoking</p></div>
           <form style={{backgroundColor:'white'}} className='p-4'>
           <div  className='flex gap-2 mb-2'>
             <div>

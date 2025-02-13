@@ -9,8 +9,8 @@ import { SearchBar } from '../Search/SearchBar.js';
 
 export const Home = () => {
 return(<>
-    <main className={style.mainContainer}>
-        <header className='container mb-5'>
+    <main className=' mainContainer'>
+        <header className='flex  mb-5'>
             <div className={style.header}>
             <div className={style.layer}>
                 <h1>Enjoy Your Dream Vacation</h1>

@@ -3,7 +3,8 @@
     display: flex;
     margin: auto;
     justify-content: space-between;
-    width: 80%
+    width: 80%;
+    gap: 20px
 }
 
 .copy{

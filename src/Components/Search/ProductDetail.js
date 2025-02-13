@@ -10,12 +10,16 @@ import { AiOutlineLike } from "react-icons/ai";
 import { PiAirplaneTiltFill } from "react-icons/pi";
 import { HotelDetails, Description } from "../api/HotelDetails";
 import { DateApi } from "../main/Layout";
+import { GoAlert } from "react-icons/go";
 
 export const ProductDetail = () => {
   const { Destinat } = useContext(DateApi);
   const [hotelDetails, sethotelDetails] = useState();
+ 
   const [description, setdescription] = useState();
   const [loading, setLoading] = useState(false);
+  const [randomImg, setradnomImg]=useState()
+  // const i = Math.floor(Math.random()*randomImg.length)
 
   useEffect(() => {
      hotelData(Destinat)
@@ -27,6 +31,8 @@ export const ProductDetail = () => {
     try {
       const details = await HotelDetails(prams);
       sethotelDetails(details);
+      const photo = Object.values(details.rooms)
+      setradnomImg(photo[0].photos)
       const Des = await Description(prams);
       setdescription(Des.data);
     } catch (err) {
@@ -36,14 +42,22 @@ export const ProductDetail = () => {
     }
   };
 
-  console.log(hotelDetails);
-  console.log(description);
-
+  // if(hotelDetails.rooms)
+  // {
+  //     const photos =  Object.values(hotelDetails.rooms) 
+  //     const randomRoom = Math.floor(Math.random()*photos.photos.length)
+  //     setradnomImg(randomRoom)
+  //     console.log(randomImg)
+  // }
+  // console.log(randomImg)
+  // console.log([...Object.values(hotelDetails.rooms)]);
+  // console.log(photos[0].photos[0].url_640x200);
+  console.log(randomImg)
   return (
     <div>
       {loading ? "Loading...." : null}
       {hotelDetails && description
-        ? <main className="">
+        ? <main className=" ">
             <section>
               <div
                 style={{
@@ -51,21 +65,29 @@ export const ProductDetail = () => {
                 }}
               >
                 <div className="flex justify-between gap-3 w-[80%] m-auto py-5 ">
-                  <figure className="w-2/3 ">
+                  <figure className="w-2/3 rounded overflow-hidden ">
                     <img
-                      src={hotelDetails.rawData.photoUrls}
+                      src={randomImg[0].url_640x200}
                       className="h-full"
                       alt=""
                     />
                   </figure>
-                  <div className="w-1/3 flex flex-col gap-2 ">
+                  {randomImg? <div className="w-1/3 flex flex-col gap-2 ">
+                    <figure className=" rounded overflow-hidden">
+                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max300} alt="" />
+                    </figure>
+                    <figure className="rounded overflow-hidden">
+                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max750} alt="" />
+                    </figure>
+                  </div> :<div className="w-1/3 flex flex-col gap-2 ">
                     <figure className="">
                       <img className="h-full" src="assets/header.png" alt="" />
                     </figure>
                     <figure className="">
                       <img className="h-full" src="assets/header.png" alt="" />
                     </figure>
-                  </div>
+                  </div> }
+                  
                 </div>
               </div>
             </section>
@@ -90,7 +112,7 @@ export const ProductDetail = () => {
                         {hotelDetails.hotel_name}
                       </h2>
                       <div>
-                        <span>
+                        <span className="nospan">
                           4.5({hotelDetails.review_nr} review)
                         </span>
                       </div>
@@ -185,41 +207,41 @@ export const ProductDetail = () => {
                               <div className="flex">
                                 <div className={style.transform}>
                                   <PiAirplaneTiltFill />
-                                </div>Hotel Penselvenyia{" "}
+                                </div>Hotel Penselvenyia
                               </div>
-                              <span>2min drive</span>
+                              <span className="nospan">2min drive</span>
                             </li>
                             <li className="flex mb-1 justify-between">
                               <div className="flex">
                                 <div className={style.transform}>
                                   <IoLocationOutline />
                                 </div>Travis Bakery store house
-                              </div>{" "}
-                              <span>10min drive</span>
+                              </div>
+                              <span className="nospan">10min drive</span>
                             </li>
                             <li className="flex mb-1 justify-between">
                               <div className="flex">
                                 <div className={style.transform}>
                                   <IoLocationOutline />
                                 </div>Olivia Johnson Garden
-                              </div>{" "}
-                              <span>15min drive</span>
+                              </div>
+                              <span className="nospan">15min drive</span>
                             </li>
                             <li className="flex mb-1 justify-between">
                               <div className="flex">
                                 <div className={style.transform}>
                                   <IoLocationOutline />
                                 </div>Norman Opera Circus
-                              </div>{" "}
-                              <span>18min drive</span>
+                              </div>
+                              <span className="nospan">18min drive</span>
                             </li>
                             <li className="flex mb-1 justify-between">
                               <div className="flex">
                                 <div className={style.transform}>
                                   <IoLocationOutline />
-                                </div>Rockdeset hotel{" "}
-                              </div>{" "}
-                              <span>32min drive</span>
+                                </div>Rockdeset hotel
+                              </div>
+                              <span className="nospan">32min drive</span>
                             </li>
                           </ul>
                         </div>
@@ -228,11 +250,12 @@ export const ProductDetail = () => {
                   </div>
 
                   {/* /////////////RooMS////////           */}
-                  <h2>Available rooms</h2>
-                  <div id="rooms" className="flex gap-2">
-                    <div className="w-1/3">
+                  <h2 className="mb-5">Available rooms</h2>
+                  <div id="rooms" className="flex justify-end gap-2">
+                    
+                    <div className="w-1/3 rounded overflow-hidden">
                       <figure>
-                        <img src="assets/header.png" />
+                        <img src={randomImg[1].url_max300? randomImg[1].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
                         <h4>Standard twin ben, Multiple beds</h4>
@@ -257,36 +280,9 @@ export const ProductDetail = () => {
                         <button className="w-full">Reserve suite</button>
                       </div>
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-1/3 rounded overflow-hidden">
                       <figure>
-                        <img src="assets/header.png" />
-                      </figure>
-                      <div className="p-2 bg-[#fff]">
-                        <h4>Standard twin ben, Multiple beds</h4>
-                        <ul>
-                          <li className="flex my-1 text-xs text-[#4f4f4f] ">
-                            <div className={style.transform}>
-                              <MdOutlineBusinessCenter />
-                            </div>{" "}
-                            300 sq ft
-                          </li>
-                          <li className="flex my-1 text-xs text-[#4f4f4f] ">
-                            <div className={style.transform}>
-                              <GiWaterPolo />
-                            </div>Sleeps 3
-                          </li>
-                          <li className="flex my-1 text-xs text-[#4f4f4f] ">
-                            <div className={style.transform}>
-                              <AiOutlineLike />
-                            </div>1 double bed and 1 twin bed
-                          </li>
-                        </ul>
-                        <button className="w-full">Reserve suite</button>
-                      </div>
-                    </div>
-                    <div className="w-1/3">
-                      <figure>
-                        <img src="assets/header.png" />
+                        <img src={randomImg[0].url_max300? randomImg[0].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
                         <h4>Standard twin ben, Multiple beds</h4>
@@ -312,6 +308,7 @@ export const ProductDetail = () => {
                       </div>
                     </div>
                   </div>
+              <div className={`warning my-10`}><div className='warnicon'><GoAlert/></div><p>Check the latest COVID-19 restrictions before you travel. <span>Learn more</span> </p></div>
                 </div>
               </div>
             </section>
