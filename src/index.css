@@ -56,13 +56,16 @@ a{
   border-radius: 5px
 
 }
+input:focus{
+  outline: solid 1px var(--main-color);
+  border : none
+}
 .warnicon{
   margin: 0 5px;
   transform: translateY(-10%);
 }
-
-.Bgb {
-  background-color : var(--main-color);
+.aside:hover .mainAside {
+     transform: translateX(100%);
 }
 .Bgw{
   background-color: var(--main-colorBg);
@@ -76,30 +79,14 @@ a{
 .wd20{
   width:20px
 } 
-.df{
-  display:flex 
-}
-.border{
+
+/* .border{
   border: 1px solid var(--main-colorBg);
   border-radius: 5px;
-}
+} */
 img{
   width:100%
 }  
-
-.mainContainer{
-  width : 80%;
-  margin : 0 auto
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.w-img{
-  width: calc(100% / 4 - 10px)
-} 
 .mainc{
   color : var(--main-color);
   transform: rotate(-40deg);
@@ -118,9 +105,7 @@ span:not(.nospan) {
 .mb-5{
   margin-bottom: 5rem;
 }
-.textCenter{
-  text-align:center
-}
+
 .reactIcon{
   position: absolute;
   transform: translate(50%, 50%);
@@ -139,6 +124,7 @@ h2{
 }
 h3{
   font-size:24px;
+  line-height: normal;
 }
 input:not(.white) {
   background-color : var(--main-colorBg);

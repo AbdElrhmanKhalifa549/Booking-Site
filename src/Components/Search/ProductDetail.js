@@ -13,17 +13,15 @@ import { DateApi } from "../main/Layout";
 import { GoAlert } from "react-icons/go";
 
 export const ProductDetail = () => {
-  const { Destinat } = useContext(DateApi);
-  const [hotelDetails, sethotelDetails] = useState();
- 
-  const [description, setdescription] = useState();
-  const [loading, setLoading] = useState(false);
-  const [randomImg, setradnomImg]=useState()
-  // const i = Math.floor(Math.random()*randomImg.length)
-
+  
+const { Destinat } = useContext(DateApi);
+const [hotelDetails, sethotelDetails] = useState();
+const [description, setdescription] = useState();
+const [loading, setLoading] = useState(false);
+const [randomImg, setradnomImg]=useState()
+  
   useEffect(() => {
-     hotelData(Destinat)
-    console.log("kkk22");
+    hotelData(Destinat)
   }, []);
 
   const hotelData = async prams => {
@@ -42,29 +40,19 @@ export const ProductDetail = () => {
     }
   };
 
-  // if(hotelDetails.rooms)
-  // {
-  //     const photos =  Object.values(hotelDetails.rooms) 
-  //     const randomRoom = Math.floor(Math.random()*photos.photos.length)
-  //     setradnomImg(randomRoom)
-  //     console.log(randomImg)
-  // }
-  // console.log(randomImg)
-  // console.log([...Object.values(hotelDetails.rooms)]);
-  // console.log(photos[0].photos[0].url_640x200);
-  console.log(randomImg)
+
   return (
     <div>
       {loading ? "Loading...." : null}
       {hotelDetails && description
-        ? <main className=" ">
+        ? <main className="">
             <section>
               <div
                 style={{
                   backgroundImage: "linear-gradient( #f4f4f4, #ffffff)"
                 }}
               >
-                <div className="flex justify-between gap-3 w-[80%] m-auto py-5 ">
+                <div className="flex justify-between gap-3 md:w-[80%] md:m-auto py-5 ">
                   <figure className="w-2/3 rounded overflow-hidden ">
                     <img
                       src={randomImg[0].url_640x200}
@@ -74,10 +62,10 @@ export const ProductDetail = () => {
                   </figure>
                   {randomImg? <div className="w-1/3 flex flex-col gap-2 ">
                     <figure className=" rounded overflow-hidden">
-                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max300} alt="" />
+                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max300} alt="room" />
                     </figure>
                     <figure className="rounded overflow-hidden">
-                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max750} alt="" />
+                      <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max750} alt="room" />
                     </figure>
                   </div> :<div className="w-1/3 flex flex-col gap-2 ">
                     <figure className="">
@@ -93,7 +81,7 @@ export const ProductDetail = () => {
             </section>
 
             <section>
-              <div className="pt-5 w-[80%] m-auto">
+              <div className="pt-5 md:w-[80%] md:m-auto">
                 <ul className="flex  gap-2">
                   <li className=" border-b-t border-b-2 hover:border-b-cb">
                     Overview
@@ -105,9 +93,9 @@ export const ProductDetail = () => {
               </div>
               {/*\\\\\\\\\\\\\\\ About && iFrame /////////////*/}
               <div className="bg-cgray pb-10 ">
-                <div className="w-[80%] m-auto ">
-                  <div className="flex justify-between  gap-3 py-10  ">
-                    <div className="w-2/3">
+                <div className="md:w-[80%] md:m-auto ">
+                  <div className="md:flex md:justify-between  gap-3 py-10  ">
+                    <div className="md:w-2/3">
                       <h2>
                         {hotelDetails.hotel_name}
                       </h2>
@@ -120,7 +108,7 @@ export const ProductDetail = () => {
                         <div className="pb-5">
                           <span>
                             <IoLocationOutline />
-                          </span>Lorem ipsum road, {hotelDetails.address}
+                          </span>{hotelDetails.address}
                         </div>
 
                         <div className="bg-[#ffffff]">
@@ -130,35 +118,35 @@ export const ProductDetail = () => {
                               {description.map(des =>
                                 <p
                                   key={des.descriptiontype_id}
-                                  className="mb-3"
+                                  className="mb-3 text-[1.5vw]"
                                 >
                                   {des.description}
                                 </p>
                               )}
                             </div>
                           </div>
-                          <hr className="text-[#4f4f4f]" />
+                          <hr className="bg-[#4f4f4f]" />
                           <div className="p-10">
                             <h3 className="mb-3">Top facilities</h3>
                             <div className="flex gap-5 text-[#4f4f4f] text-xs">
                               <ul>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className= 'text-cb mr-2'
                                   >
                                     <IoMdWifi />
                                   </div>Free wifi
                                 </li>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className='text-cb mr-2'
                                   >
                                     <MdAir />
                                   </div>Air Conditioning
                                 </li>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className='text-cb mr-2'
                                   >
                                     <MdOutlineDirectionsCar />
                                   </div>Parking available
@@ -167,21 +155,21 @@ export const ProductDetail = () => {
                               <ul>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className='text-cb mr-2'
                                   >
                                     <MdOutlineBusinessCenter />
                                   </div>Business Services
                                 </li>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className='text-cb mr-2'
                                   >
                                     <GiWaterPolo />
                                   </div>Swimming pool
                                 </li>
                                 <li className="flex">
                                   <div
-                                    className={`${style.transform} text-cb mr-2`}
+                                    className='text-cb mr-2'
                                   >
                                     <AiOutlineLike />
                                   </div>Top rated in area
@@ -192,10 +180,11 @@ export const ProductDetail = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-1/3">
+                    <div className="md:w-1/3">
                       <div className="mb-4">
                         <iframe
                           className="w-full"
+                          title="map"
                           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27324.16694425045!2d29.815603199999998!3d31.1230464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1738860135565!5m2!1sen!2seg"
                         />
                       </div>
@@ -255,7 +244,7 @@ export const ProductDetail = () => {
                     
                     <div className="w-1/3 rounded overflow-hidden">
                       <figure>
-                        <img src={randomImg[1].url_max300? randomImg[1].url_max300: 'assets/header.png' } />
+                        <img alt="room2" src={randomImg[1].url_max300? randomImg[1].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
                         <h4>Standard twin ben, Multiple beds</h4>
@@ -282,7 +271,7 @@ export const ProductDetail = () => {
                     </div>
                     <div className="w-1/3 rounded overflow-hidden">
                       <figure>
-                        <img src={randomImg[0].url_max300? randomImg[0].url_max300: 'assets/header.png' } />
+                        <img  alt="room1" src={randomImg[0].url_max300? randomImg[0].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
                         <h4>Standard twin ben, Multiple beds</h4>

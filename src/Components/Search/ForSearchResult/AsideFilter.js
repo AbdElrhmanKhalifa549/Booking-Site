@@ -43,13 +43,17 @@ export const AsideFilter = ({
         return budget;
     }
   };
+// const mainAside=()=>{
+//   document.querySelector('.mainAside').classList.toggle('-translate-x-full','-translate-x-full')
+
+// }
 
   return (
     <div>
       <aside>
         <div className="Bgw">
           <h3 className="mb">Search by property name</h3>
-          <div>
+          <div className="reltaive">
             <CiSearch className="reactIcon" />
             <input
               type="text"
@@ -59,15 +63,15 @@ export const AsideFilter = ({
               value={inputSearch}
             />{
               inputSearch===""? null:
-            <span onClick={()=>setinputSearch("")} className='absolute translate-x-1/4 translate-y-1/4 cursor-pointer'>X</span>
+            <span onClick={()=>setinputSearch("")} className='absolute right -translate-x-[10%] translate-y-[10%] cursor-pointer'>X</span>
             }
           </div>
         </div>
         <h3 className="mb p-5">Filter by</h3>
-        <div className="border mb">
+        <div className="border border-cgray mb">
           <h4 className="Bgw mb">Your budget per day</h4>
           <div className="p-5 space-y-2">
-            <div className="df">
+            <div className="flex">
               <input
                 className="wd20"
                 onChange={e => setbudget(e.target.id)}
@@ -77,7 +81,7 @@ export const AsideFilter = ({
               />
               <label htmlFor="verylow"> $ 0 - $ 200</label>
             </div>
-            <div className="df">
+            <div className="flex">
               <input
                 className="wd20"
                 onChange={e => setbudget(e.target.id)}
@@ -87,7 +91,7 @@ export const AsideFilter = ({
               />
               <label htmlFor="low"> $ 200 - $ 500</label>
             </div>
-            <div className="df">
+            <div className="flex">
               <input
                 className="wd20"
                 onChange={e => setbudget(e.target.id)}
@@ -97,7 +101,7 @@ export const AsideFilter = ({
               />
               <label htmlFor="economy"> $ 500 - $ 1,000</label>
             </div>
-            <div className="df">
+            <div className="flex">
               <input
                 className="wd20"
                 onChange={e => setbudget(e.target.id)}
@@ -107,7 +111,7 @@ export const AsideFilter = ({
               />
               <label htmlFor="high"> $ 1,000 - $ 2,000</label>
             </div>
-            <div className="df">
+            <div className="flex">
               <input
                 className="wd20"
                 onChange={e => setbudget(e.target.id)}
@@ -117,7 +121,7 @@ export const AsideFilter = ({
               />
               <label htmlFor="veryhigh"> $ 2,000 - $ 5,000</label>
             </div>
-            <div className="df">
+            <div className="flex">
               <label htmlFor="range">Set your own budget</label>
               <input
                 id="range"
@@ -129,7 +133,7 @@ export const AsideFilter = ({
               />
             </div>
             <div className={style.borederD}>
-              <div className="df">
+              <div className="flex">
                 <div className={style.borederD}>Min budget</div>
                 <div className={style.borederD}>Max budget</div>
               </div>
@@ -137,13 +141,13 @@ export const AsideFilter = ({
             </div>
           </div>
         </div>
-        <div className="border mb">
+        <div className="border border-cgray mb">
           <h4 className="Bgw">Rating</h4>
           <div>
             <h5 style={{ padding: "15px" }}>Show only ratings more than</h5>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div
-                className="border mb"
+                className="border border-cgray mb"
                 style={{
                   width: "40px",
                   height: "40px",
@@ -155,7 +159,7 @@ export const AsideFilter = ({
                 1 <FaStar className="gold" />{" "}
               </div>
               <div
-                className="border mb"
+                className="border border-cgray mb"
                 style={{
                   width: "40px",
                   height: "40px",
@@ -167,7 +171,7 @@ export const AsideFilter = ({
                 2 <FaStar className="gold" />{" "}
               </div>
               <div
-                className="border mb"
+                className="border border-cgray mb"
                 style={{
                   width: "40px",
                   height: "40px",
@@ -179,7 +183,7 @@ export const AsideFilter = ({
                 3 <FaStar className="gold" />{" "}
               </div>
               <div
-                className="border mb"
+                className="border border-cgray mb"
                 style={{
                   width: "40px",
                   height: "40px",
@@ -191,7 +195,7 @@ export const AsideFilter = ({
                 4 <FaStar className="gold" />{" "}
               </div>
               <div
-                className="border mb"
+                className="border border-cgray mb"
                 style={{
                   width: "40px",
                   height: "40px",

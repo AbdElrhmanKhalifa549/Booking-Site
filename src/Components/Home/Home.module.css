@@ -1,7 +1,7 @@
 .img3w{
-    width: calc(100% / 3 - 10px);
     border-radius: 5px;
-    height : 240px
+    height : 240px;
+    margin-bottom : 5px
 }
 .warning {
     display: flex;

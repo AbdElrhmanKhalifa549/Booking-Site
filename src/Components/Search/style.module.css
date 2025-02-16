@@ -32,17 +32,22 @@
     border-radius:5px
 }
 .displayGrid{
+  display:flex
+}
+.displayGrid{
     display: grid;
     grid-template-columns: 25% auto;
     gap: 10px;
-    margin: 10px
+    margin: 10px ;
+    padding: 10px 0;
 }
 .displayGridSort{
     display: grid;
     grid-template-columns: 75% auto;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 5px
+    margin-bottom: 5px ;
+    
 }
 .bg {
     background-color: blue;
@@ -56,12 +61,13 @@
 .cardContainer{
     display:grid;
     grid-template-columns: 35% 45% auto;
-    gap: 10px;
+    column-gap: 10px;
     justify-content:space-between;
     border: 1px solid var(--main-colorBg);
     padding: 15px;
     border-radius: 5px;
-    margin-bottom:5px
+    margin-bottom:5px; 
+    font-size:1vw
 }
 .fontSize{
     font-size: var(--card-font);
@@ -179,11 +185,13 @@ padding: 5px;
   }
 
 
-.transform{
-  transform: translateY(10%); 
-  margin-right: 5px
-}
+
 span .ese{
   position: absolute;
     transform: translate(10%, 25%)
+}
+
+/* Popup */
+.popup{
+  background-color: rgba(255,255,255,0.8)
 }

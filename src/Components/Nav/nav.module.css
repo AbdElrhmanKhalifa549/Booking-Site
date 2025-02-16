@@ -1,11 +1,16 @@
 .container{
+    text-align:center
+}
+
+
+@media screen and (min-width: 768px){
+.container{
     display: flex;
     justify-content: space-between;
     margin: auto;
     padding : 15px 0 ; 
     width : 80%;
-    align-items: center;
-
+} 
 }
 .ul {
     display: flex;
@@ -37,6 +42,7 @@
     border-style: solid;
     position: absolute;
     transform: translateY(-99%);
+    left:0
 }
 
 .Dashboard li{
@@ -56,4 +62,28 @@
     height : 200px;
     color: white ;
     transition : 2s;
+}
+.navMenu{
+    display:none;
+    position : absolute;
+    width : 100px;
+    height: 80px;
+    top: 120%;
+    background-color: white;
+    height: auto;
+    padding: 4px; 
+    border : 1px solid var(--main-colorBg)
+
+}
+.navMenu::before{
+    content:'';
+    border-width: 10px;
+    border-color: transparent transparent var(--main-colorBg);
+    border-style: solid;
+    position: absolute;
+    transform: translateY(-120%);
+    left : 0
+}
+.navMenu ul >li:not(:last-child){
+    border-bottom: 1px solid var(--main-colorBg)
 }
