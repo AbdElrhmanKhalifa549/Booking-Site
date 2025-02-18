@@ -11,15 +11,16 @@ import { PiAirplaneTiltFill } from "react-icons/pi";
 import { HotelDetails, Description } from "../api/HotelDetails";
 import { DateApi } from "../main/Layout";
 import { GoAlert } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 export const ProductDetail = () => {
-  
+  const navigate = useNavigate()
 const { Destinat } = useContext(DateApi);
 const [hotelDetails, sethotelDetails] = useState();
 const [description, setdescription] = useState();
 const [loading, setLoading] = useState(false);
 const [randomImg, setradnomImg]=useState()
-  
+const [userTrips,setuserTrips] =useState(JSON.parse(localStorage.getItem("UserNow")))
   useEffect(() => {
     hotelData(Destinat)
   }, []);
@@ -40,12 +41,38 @@ const [randomImg, setradnomImg]=useState()
     }
   };
 
+  const SetDetailsinLocalS=(e)=>{
+    const hotelTrips={
+      name:hotelDetails.hotel_name,
+      checkIn : hotelDetails.arrival_date,
+      checkOut: hotelDetails.departure_date,
+      hotelPhoto:hotelDetails.rawData.photoUrls,
+      reView:hotelDetails.review_nr,
+      gross:hotelDetails.product_price_breakdown.gross_amount_per_night.value || 0,
+      tax:hotelDetails.product_price_breakdown.included_taxes_and_charges_amount.value || 0,
+      strikethrough:hotelDetails.product_price_breakdown.strikethrough_amount_per_night.value || 0,
+      night:e
+    };
+
+    if(userTrips.trips &&userTrips.trips !== hotelTrips ){
+      userTrips.trips.push(hotelTrips)
+      localStorage.setItem('UserNow',JSON.stringify(userTrips))
+      navigate('/checkout')
+    }else{
+      const arrayTrips=[]
+      arrayTrips.push(hotelTrips)
+      setuserTrips((prevs)=>({...prevs,trips : arrayTrips}))
+      localStorage.setItem('UserNow',JSON.stringify(userTrips))
+      navigate('/checkout')
+    }
+    }
+    //
 
   return (
     <div>
       {loading ? "Loading...." : null}
       {hotelDetails && description
-        ? <main className="">
+        ? <main>
             <section>
               <div
                 style={{
@@ -53,18 +80,18 @@ const [randomImg, setradnomImg]=useState()
                 }}
               >
                 <div className="flex justify-between gap-3 md:w-[80%] md:m-auto py-5 ">
-                  <figure className="w-2/3 rounded overflow-hidden ">
+                  <figure className="w-2/3  lg:max-h-96 rounded overflow-hidden ">
                     <img
                       src={randomImg[0].url_640x200}
                       className="h-full"
-                      alt=""
+                      alt="MainRoom"
                     />
                   </figure>
-                  {randomImg? <div className="w-1/3 flex flex-col gap-2 ">
-                    <figure className=" rounded overflow-hidden">
+                  {randomImg? <div className="w-1/3 lg:max-h-96 flex flex-col gap-2 ">
+                    <figure className=" rounded overflow-hidden max-h-48">
                       <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max300} alt="room" />
                     </figure>
-                    <figure className="rounded overflow-hidden">
+                    <figure className="rounded overflow-hidden max-h-48">
                       <img className="h-full" src={randomImg[Math.floor(Math.random()*randomImg.length)].url_max750} alt="room" />
                     </figure>
                   </div> :<div className="w-1/3 flex flex-col gap-2 ">
@@ -80,9 +107,9 @@ const [randomImg, setradnomImg]=useState()
               </div>
             </section>
 
-            <section>
+            <section >
               <div className="pt-5 md:w-[80%] md:m-auto">
-                <ul className="flex  gap-2">
+                <ul className="flex  gap-2 px-5 md:px-5">
                   <li className=" border-b-t border-b-2 hover:border-b-cb">
                     Overview
                   </li>
@@ -92,10 +119,10 @@ const [randomImg, setradnomImg]=useState()
                 </ul>
               </div>
               {/*\\\\\\\\\\\\\\\ About && iFrame /////////////*/}
-              <div className="bg-cgray pb-10 ">
+              <div className="bg-cgray pb-10 p-10 md:p-0 ">
                 <div className="md:w-[80%] md:m-auto ">
                   <div className="md:flex md:justify-between  gap-3 py-10  ">
-                    <div className="md:w-2/3">
+                    <div className="md:w-2/3 mb-5">
                       <h2>
                         {hotelDetails.hotel_name}
                       </h2>
@@ -180,7 +207,7 @@ const [randomImg, setradnomImg]=useState()
                         </div>
                       </div>
                     </div>
-                    <div className="md:w-1/3">
+                    <div className="md:w-1/3 rounded overflow-hidden">
                       <div className="mb-4">
                         <iframe
                           className="w-full"
@@ -242,8 +269,8 @@ const [randomImg, setradnomImg]=useState()
                   <h2 className="mb-5">Available rooms</h2>
                   <div id="rooms" className="flex justify-end gap-2">
                     
-                    <div className="w-1/3 rounded overflow-hidden">
-                      <figure>
+                    <div className="w-1/3 rounded ">
+                      <figure className="max-h-24 lg:max-h-40 overflow-hidden">
                         <img alt="room2" src={randomImg[1].url_max300? randomImg[1].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
@@ -266,15 +293,15 @@ const [randomImg, setradnomImg]=useState()
                             </div>1 double bed and 1 twin bed
                           </li>
                         </ul>
-                        <button className="w-full">Reserve suite</button>
+                        <button onClick={()=>SetDetailsinLocalS(2)} className="w-full">Reserve suite</button>
                       </div>
                     </div>
-                    <div className="w-1/3 rounded overflow-hidden">
-                      <figure>
+                    <div className="w-1/3 rounded ">
+                      <figure className="max-h-24 lg:max-h-40 overflow-hidden">
                         <img  alt="room1" src={randomImg[0].url_max300? randomImg[0].url_max300: 'assets/header.png' } />
                       </figure>
                       <div className="p-2 bg-[#fff]">
-                        <h4>Standard twin ben, Multiple beds</h4>
+                        <h4>Standard twin ben, 1 Queen bed</h4>
                         <ul>
                           <li className="flex my-1 text-xs text-[#4f4f4f] ">
                             <div className={style.transform}>
@@ -293,7 +320,7 @@ const [randomImg, setradnomImg]=useState()
                             </div>1 double bed and 1 twin bed
                           </li>
                         </ul>
-                        <button className="w-full">Reserve suite</button>
+                        <button onClick={()=>SetDetailsinLocalS(1)} className="w-full">Reserve suite</button>
                       </div>
                     </div>
                   </div>

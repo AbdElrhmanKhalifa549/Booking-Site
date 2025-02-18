@@ -31,9 +31,6 @@ export const SearchBar = ({ setLoading }) => {
     ? (nowData.getDate() + 2).toString()
     : (Number("0" + nowData.getDate()) + 2).toString()}`;
 
-  console.log(mainDataArrival);
-  console.log(mainDataDeparture);
-
   const getDestinatKey = e => {
     const x = e.target.value;
     setdestination(x);

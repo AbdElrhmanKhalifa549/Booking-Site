@@ -38,3 +38,16 @@
     padding: 5px;
     color: white;
 }
+/*/////////////// MyTrips////////*/
+.cardContainer{
+    display:grid;
+    grid-template-columns: 35% 45% auto;
+    column-gap: 10px;
+    background-color:white;
+    justify-content:space-between;
+    border: 1px solid var(--main-colorBg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom:5px; 
+    font-size:1.1vw
+}

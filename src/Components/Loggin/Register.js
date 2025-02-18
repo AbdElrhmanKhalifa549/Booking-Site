@@ -23,8 +23,7 @@ const [regex,setregex] = useState({
   
 })
 
-
-
+// Add Users to LocalStorg
 function adduser  (){
     // check if users exist in local 
     if( local){  
@@ -33,11 +32,9 @@ function adduser  (){
             users.email.toLowerCase().includes(user.email.toLowerCase()));
         if(filtered.length>0){
             setusermassege(true)
-            console.log(filtered)
             return false;
         }
-    }
-
+    }   
     arrlocal.push(user)
     localStorage.setItem('Users',JSON.stringify(arrlocal))
     return true;
@@ -53,25 +50,25 @@ useEffect(()=>{
     }
    }else{
     setregex((prevs)=>({...prevs, email : false}))
-
-   } 
+    } 
 },[user])
-console.log(regex)
-let valueChange = (e)=>{
-let {name , value} = e.target
 
-setuser((x)=> {return{...x, [name] : value}} )
+//get Values Input
+let valueChange = (e)=>{
+    let {name , value} = e.target
+    setuser((x)=> {return{...x, [name] : value}} )
 }
+
 // *********\\
 function displaySubmit(e){
-e.preventDefault();
+    e.preventDefault();
+    //Checked 
 if(regex.email&&regex.Password){
 if (use.email !== JSON.parse(local)){
 if(user.Password === user.rePassword){
 var added=adduser();
 if(added)
 handleClick()
-
 }else{
     setrepassword(true)
 }}

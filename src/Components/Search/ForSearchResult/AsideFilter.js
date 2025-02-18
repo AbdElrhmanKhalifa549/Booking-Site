@@ -1,15 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../style.module.css";
 import { CiSearch } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-export const AsideFilter = ({
-  setinputSearch,
-  setminprice,
-  setmaxprice,
-  budget,
-  setbudget,
-  inputSearch
-}) => {
+export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbudget,inputSearch}) => {
+  const [click,setclick]= useState(false)
+  
   useEffect(
     () => {
       minandmax();
@@ -43,14 +38,11 @@ export const AsideFilter = ({
         return budget;
     }
   };
-// const mainAside=()=>{
-//   document.querySelector('.mainAside').classList.toggle('-translate-x-full','-translate-x-full')
 
-// }
 
   return (
-    <div>
-      <aside>
+      <aside className={ click ? `relative transition`: `relative left-0 -translate-x-[110%] transition md:translate-x-0 `}>
+        <div onClick={()=>setclick(!click)} className="md:hidden top-96 cursor-pointer sticky p-2 bg-cb right-0 translate-x-full text-[white] rounded-e-md" >Aside</div>
         <div className="Bgw">
           <h3 className="mb">Search by property name</h3>
           <div className="reltaive">
@@ -211,6 +203,5 @@ export const AsideFilter = ({
           <div />
         </div>
       </aside>
-    </div>
   );
 };

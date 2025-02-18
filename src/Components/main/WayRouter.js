@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 export  function WayRouter({children}){
 
-  if(localStorage.getItem('Isloggin')==='yes'){
+  if(localStorage.getItem('UserNow')){
     return children
     
   }else {

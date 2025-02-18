@@ -11,17 +11,18 @@ import { Link, useLocation} from 'react-router-dom'
 
 
 const Navbbar = () => {
-
+    const [userLogin,setuserLogin] =useState(JSON.parse(localStorage.getItem("UserNow")))
     const [login,setlogin] = useState(false)
     const location = useLocation()
     const nowLocation =location.pathname === "/search" 
-
-function LogOut(){
-    localStorage.removeItem('Isloggin')
-    setlogin(false)
-}
-useEffect(()=>{
-    if(localStorage.getItem('Isloggin')){
+    function LogOut(){
+        setuserLogin((prevs)=>{prevs.log = 'no'})
+        // localStorage.setItem('UserNow',JSON.stringify(userLogin))
+        localStorage.removeItem("UserNow")
+        setlogin(false)
+    }
+    useEffect(()=>{
+    if(userLogin && userLogin.log === 'yes'){
         setlogin(true)
     }else{
         setlogin(false)
@@ -63,7 +64,7 @@ return ( <>
     <div className={style.Dashboard}>
         <ul className={style.navBord}>
             <li> <MdManageAccounts /> <Link>Manage account</Link>  </li>
-            <li> <GiAirplaneDeparture /> <Link>My trips</Link>     </li>
+            <li> <GiAirplaneDeparture /> <Link to={'/mytrips'}>My trips</Link>     </li>
             <li> <LuWallet />      <Link> Reward and wallet</Link>     </li>
             <li> <IoIosLogOut /> <Link  onClick={LogOut}>Sign out</Link></li>
         </ul>

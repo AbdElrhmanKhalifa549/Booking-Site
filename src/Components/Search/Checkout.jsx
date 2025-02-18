@@ -44,6 +44,13 @@ export const Checkout = () => {
   const [check,setcheck] = useState()
   const [successed,setsuccessed]=useState(false)
   const navgate = useNavigate()
+
+  const userChecked = JSON.parse(localStorage.getItem("UserNow"))
+  const Users = JSON.parse(localStorage.getItem('Users'))
+  const trip = userChecked.trips[0]
+
+
+
   const getuser = (e) => {
     const { name, value } = e.target;
     setuser((prev) => ({ ...prev, [name]: value }));
@@ -66,6 +73,12 @@ export const Checkout = () => {
   };
 
   const bottonChecked=()=>{
+    const UpdateUsers =Users.map((user)=> (user.email.includes(userChecked.email)? user = userChecked : user) )
+    localStorage.setItem('Users',JSON.stringify(UpdateUsers))
+    
+    
+    
+    
     if(check==='on'){
     setsuccessed(true)
     }
@@ -75,20 +88,19 @@ export const Checkout = () => {
 
 
   return (
-    <>
+    <div>
       <main className=" bg-cgray py-10">
-        <section className="md:w-[80%] md:m-auto">
+        <section className="relative md:w-[80%] md:m-auto">
           <h2 className="mb-2">Secure your reservation</h2>
           <div className={`warning mb-5`}>
             <div className="warnicon">
               <GoAlert />
             </div>
             <p>
-              Check the latest COVID-19 restrictions before you travel.{" "}
-              <span>Learn more</span>{" "}
+              Check the latest COVID-19 restrictions before you travel.
+              <span>Learn more</span>
             </p>
           </div>
-
           <section className="md:flex gap-3">
             <div className="md:w-2/3 ">
               <div className="mb-4 rounded overflow-hidden">
@@ -98,8 +110,8 @@ export const Checkout = () => {
                 >
                   <div>
                     <AiFillSecurityScan />
-                  </div>{" "}
-                  <h4>Room1</h4>{" "}
+                  </div>
+                  <h4>Room1</h4>
                   <p>2 adults, 1 double bed and 1 twin bed, Non-smoking</p>
                 </div>
                 <form style={{ backgroundColor: "white" }} className="p-4">
@@ -308,21 +320,21 @@ export const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className="md:w-1/3">
+            <div className="md:w-1/3 md:m-0 text-[1.1vw] w-1/2 m-auto py-5 ">
               <div
                 style={{ backgroundColor: "white" }}
                 className="mb-3 rounded "
               >
                 <figure>
-                  <img alt="hotel" src="assets/header.png" />
+                  <img alt="hotel" src={Object.values(trip.hotelPhoto)} />
                 </figure>
                 <div className="p-4">
-                  <h3 className="mb-1">Lakeside Motel Warefront</h3>
+                  <h3 className="mb-1">{trip.name}</h3>
                   <div></div>
                   <span className="mb-1">Non refundable</span>
-                  <p className="mb-1">Check in:</p>
-                  <p className="mb-1">Check out:</p>
-                  <p className="mb-1">2 night stay</p>
+                  <p className="mb-1">Check in:{trip.checkIn}</p>
+                  <p className="mb-1">Check out:{trip.checkOut}</p>
+                  <p className="mb-1">{trip.night} night stay</p>
                 </div>
               </div>
 
@@ -333,38 +345,40 @@ export const Checkout = () => {
                 <h3 className="bg-[#85E0AB] p-4">Price Details</h3>
                 <div className="p-4">
                   <div className="flex justify-between mb-2">
-                    <p>1 room X 2 nights</p>
-                    <span>$ 120.32</span>
+                    <p>1 room X {trip.night} nights</p>
+                    <span> $ {(trip.night * Math.floor(trip.gross)).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between mb-2 pb-2 border-b-2 border-cgray">
                     <p>Tax and service fees</p>
-                    <span>$ 8.32</span>
+                    <span>$ {trip.tax}</span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <p>Total</p>
-                    <span>$130</span>
+                    <span>${(trip.tax + trip.night * Math.floor(trip.gross)).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-        </section>
-        {/*////////////// Popup ////////////////*/}
+           {/*////////////// Popup ////////////////*/}
         {successed?
                           <div className={`absolute w-full h-full top-0 ${style.popup} `}>
                           <div className="text-center bg-cgray w-1/2 m-auto p-5 rounded">
                             <div className=" "><img src="assets/image 11.png" alt="Booking_Successful" /></div>
                             <h2>Booking Successful</h2>
                             <p>Congratulations your reservation has been made. You will be notified 2 days prior the date.</p>
-                            <button onClick={()=>navgate('/')}>View Trip</button>
+                            <button onClick={()=>navgate('/mytrips')}>View Trip</button>
                           </div>
                         </div>
                           :null    
       }
       
                     {/*////////////// EndPopup ////////////////*/}
-      </main>
+        </section>
        
-    </>
+      </main>
+      
+       
+    </div>
   );
 };

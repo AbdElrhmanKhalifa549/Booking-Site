@@ -21,6 +21,10 @@ html{
   margin : 0 ; 
   padding : 0 ;
 }
+.containerr{
+  width:80%;
+  margin:auto;
+}
 h2,h3,h5 {
   color:var(--heading-color)
 }

@@ -18,24 +18,27 @@ export const SearchResult = () => {
   const [currentPage, setcurrentPage] = useState(1);
 
   const [inputSearch, setinputSearch] = useState("");
+//State for Handel Pudget
   const [minprice, setminprice] = useState("");
   const [maxprice, setmaxprice] = useState("");
   const [budget, setbudget] = useState("");
-
+// State From Api State
   const [hotels, sethotels] = useState([]);
   const [loading, setLoading] = useState(false);
   const [Error, setError] = useState(null);
+// State filter Search and Sort
   const [titleSearch, settitleSearch] = useState();
-
   const [sortinput, setsortinput] = useState([]);
 
+
+  //Handel Pagination With Api
   const paginationpage = useCallback(
     () => {
       setDestinat(prves => ({ ...prves, page_number: currentPage }));
     },
     [currentPage]
   );
-  //
+  
   useEffect(
     () => {
       if (!localStorage.getItem("dest")) {
@@ -47,6 +50,7 @@ export const SearchResult = () => {
     [Destinat.sort]
   );
 
+  //get key Sort to Api Sort 
   const getSortkey = e => {
     const x = sortinput.find(item => item.title === e.target.value);
     if (x) {
@@ -74,10 +78,12 @@ export const SearchResult = () => {
     [Destinat]
   );
 
+  //Get id Hotel 
   function Product(id) {
     setDestinat(prevs => ({ ...prevs, hotel_id: id }));
     navigator("/product");
   }
+  console.log(hotels)
 
   return (
     <div>
@@ -90,7 +96,7 @@ export const SearchResult = () => {
         ? <div className={" mb-5"}>
             <SearchBar />
 
-            <main style={{ width: "80%", margin: "auto" }}>
+            <main className="md:w-[80%] md:m-auto">
               <div className={style.displayGrid}>
                 <AsideFilter
                   inputSearch={inputSearch}
@@ -225,59 +231,6 @@ export const SearchResult = () => {
             </main>
           </div>
         : "....."}
-      {/* <main >
-          <div className={style.displayGrid}>        
-       
-        
-          <AsideFilter />
-          
-       
-        <section>
-          <div className={style.displayGridSort}>
-            <h2><strong></strong> : search results found</h2>
-            <input list='sort' type='text' onChange={getSortkey} placeholder='Sort by' />
-            <datalist id='sort'>
-              <option></option>
-            </datalist>
-          </div>
-
-
-        <div className={style.cardContainer}>
-        <div>
-            <figure><img src='assets/header.png' alt='Hotel'></img></figure>
-        </div>
-        <div>
-            <h3></h3>
-            <div style={{display:'flex'}}>
-                <span className={style.fontSize}>4.5(review)</span>
-                </div>
-            <div>
-                <h5 className={style.fontSize}>Live a little and celbrate with champagne</h5>
-                <p className={style.fontSize}></p>
-                <button >See availability</button>
-            </div>
-        </div>
-        <div className={style.col}>
-                <h4 className={style.bgr}>Book now and receive 15% off</h4>
-                <span className={style.bgg}> 5% off</span>
-            
-            <div style={{alignSelf:'end'}}>
-                <div style={{textAlign:'end'}}> 
-           <small><del style={{color:'#EB5757'}}></del></small> </div> 
-                <p className={style.fontSize}>Includes taxes and fees</p>
-            </div>
-        </div>
-        <div>
-      </div>
-    </div>   
-         
-          
-    
-          
-  </section>
-         </div>
-         <div className={`warning mb-5`}><div className='warnicon'><GoAlert/></div><p>Check the latest COVID-19 restrictions before you travel. <span>Learn more</span> </p></div>
-        </main> */}
     </div>
   );
 };
