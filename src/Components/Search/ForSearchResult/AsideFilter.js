@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "../style.module.css";
 import { CiSearch } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbudget,inputSearch}) => {
+export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbudget,inputSearch,setpropertyClass}) => {
   const [click,setclick]= useState(false)
   
   useEffect(
@@ -140,36 +140,42 @@ export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbu
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div
                 className="border border-cgray mb"
+                onClick={()=>setpropertyClass(1)}
                 style={{
                   width: "40px",
                   height: "40px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  cursor:'pointer'
                 }}
               >
                 1 <FaStar className="gold" />{" "}
               </div>
               <div
                 className="border border-cgray mb"
+                onClick={()=>setpropertyClass(2)}
                 style={{
                   width: "40px",
                   height: "40px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  cursor:'pointer'
                 }}
               >
                 2 <FaStar className="gold" />{" "}
               </div>
               <div
                 className="border border-cgray mb"
+                onClick={()=>setpropertyClass(3)}
                 style={{
                   width: "40px",
                   height: "40px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  cursor:'pointer'
                 }}
               >
                 3 <FaStar className="gold" />{" "}
@@ -181,22 +187,25 @@ export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbu
                   height: "40px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
-                }}
+                  alignItems: "center",
+                  cursor:'pointer'
+                }} onClick={()=>setpropertyClass(4)}
               >
                 4 <FaStar className="gold" />{" "}
               </div>
               <div
                 className="border border-cgray mb"
+                onClick={()=>setpropertyClass(5)}
                 style={{
                   width: "40px",
                   height: "40px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  cursor:'pointer'
                 }}
               >
-                5 <FaStar className="gold" />{" "}
+                5 <FaStar className="gold" />
               </div>
             </div>
           </div>

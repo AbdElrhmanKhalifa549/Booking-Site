@@ -42,6 +42,7 @@ const [userTrips,setuserTrips] =useState(JSON.parse(localStorage.getItem("UserNo
   };
 
   const SetDetailsinLocalS=(e)=>{
+    const night = Number(hotelDetails.departure_date.split("-").splice(2))-Number(hotelDetails.arrival_date.split("-").splice(2))
     const hotelTrips={
       name:hotelDetails.hotel_name,
       checkIn : hotelDetails.arrival_date,
@@ -50,23 +51,32 @@ const [userTrips,setuserTrips] =useState(JSON.parse(localStorage.getItem("UserNo
       reView:hotelDetails.review_nr,
       gross:hotelDetails.product_price_breakdown.gross_amount_per_night.value || 0,
       tax:hotelDetails.product_price_breakdown.included_taxes_and_charges_amount.value || 0,
-      strikethrough:hotelDetails.product_price_breakdown.strikethrough_amount_per_night.value || 0,
-      night:e
+      strikethrough:hotelDetails.product_price_breakdown.strikethrough_amount_per_night?.value || 0,
+      night,
+      bed:e,
     };
 
-    if(userTrips.trips &&userTrips.trips !== hotelTrips ){
+    if(userTrips.trips && (!userTrips.trips.includes(hotelTrips)) ){
       userTrips.trips.push(hotelTrips)
       localStorage.setItem('UserNow',JSON.stringify(userTrips))
-      navigate('/checkout')
+      if(userTrips.trips){
+        navgat()
+      }
+      console.log('yes', userTrips)
     }else{
       const arrayTrips=[]
       arrayTrips.push(hotelTrips)
       setuserTrips((prevs)=>({...prevs,trips : arrayTrips}))
-      localStorage.setItem('UserNow',JSON.stringify(userTrips))
-      navigate('/checkout')
+      localStorage.setItem("UserNow",JSON.stringify(userTrips))
+      if(userTrips.trips){
+        navgat()
+      }
+      
+      console.log('no',userTrips)
     }
     }
     //
+    const navgat= ()=> navigate('/checkout');
 
   return (
     <div>

@@ -32,6 +32,7 @@
     background-color: var(--main-colorBg);
     display:none;
     border-radius: 4px;
+    z-index:1
     
     
 }

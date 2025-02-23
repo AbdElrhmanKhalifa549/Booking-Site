@@ -47,7 +47,7 @@ export const Checkout = () => {
 
   const userChecked = JSON.parse(localStorage.getItem("UserNow"))
   const Users = JSON.parse(localStorage.getItem('Users'))
-  const trip = userChecked.trips[0]
+  const trip = userChecked.trips[userChecked.trips?.length-1]
 
 
 
@@ -345,7 +345,7 @@ export const Checkout = () => {
                 <h3 className="bg-[#85E0AB] p-4">Price Details</h3>
                 <div className="p-4">
                   <div className="flex justify-between mb-2">
-                    <p>1 room X {trip.night} nights</p>
+                    <p>{trip.bed} room X {trip.night} nights</p>
                     <span> $ {(trip.night * Math.floor(trip.gross)).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between mb-2 pb-2 border-b-2 border-cgray">

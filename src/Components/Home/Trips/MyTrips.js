@@ -27,7 +27,7 @@ export const MyTrips = () => {
                         <h5 className='mb-2' >Non refundable</h5>
                         <p className='mb-2'>checkIn:{item.checkIn} </p>
                         <p className='mb-2'>checkOut:{item.checkOut}</p>
-                        <p>2 night stay</p>
+                        <p>{item.night} night stay</p>
                     </div>
                 
             </div>

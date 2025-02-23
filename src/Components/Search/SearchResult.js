@@ -10,6 +10,7 @@ import { GoAlert } from "react-icons/go";
 import { AsideFilter } from "./ForSearchResult/AsideFilter";
 import { Pagination } from "./ForSearchResult/Pagination";
 import { SearchHotel, Sort } from "../api/SearchHotel";
+import { FaStar } from "react-icons/fa6";
 
 export const SearchResult = () => {
   const navigator = useNavigate();
@@ -29,6 +30,7 @@ export const SearchResult = () => {
 // State filter Search and Sort
   const [titleSearch, settitleSearch] = useState();
   const [sortinput, setsortinput] = useState([]);
+  const [propertyClass,setpropertyClass]=useState('')
 
 
   //Handel Pagination With Api
@@ -105,6 +107,7 @@ export const SearchResult = () => {
                   setmaxprice={setmaxprice}
                   budget={budget}
                   setbudget={setbudget}
+                  setpropertyClass={setpropertyClass}
                 />
 
                 <section>
@@ -141,7 +144,7 @@ export const SearchResult = () => {
                           : item.property.priceBreakdown.grossPrice.value >=
                               minprice &&
                             item.property.priceBreakdown.grossPrice.value <=
-                              maxprice)
+                              maxprice) && (propertyClass === ''? item : item.property.propertyClass === propertyClass)
                     )
                     .map(hotel =>
                       <div key={hotel.hotel_id} className={style.cardContainer}>
@@ -156,7 +159,7 @@ export const SearchResult = () => {
                           </h3>
                           <div style={{ display: "flex" }}>
                             <span className={style.fontSize}>
-                              4.5({hotel.property.reviewCount}review)
+                             <FaStar className="gold" /> {hotel.property.propertyClass}({hotel.property.reviewCount}review)
                             </span>
                           </div>
                           <div className="grid justify-between">

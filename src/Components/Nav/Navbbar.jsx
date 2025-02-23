@@ -17,7 +17,6 @@ const Navbbar = () => {
     const nowLocation =location.pathname === "/search" 
     function LogOut(){
         setuserLogin((prevs)=>{prevs.log = 'no'})
-        // localStorage.setItem('UserNow',JSON.stringify(userLogin))
         localStorage.removeItem("UserNow")
         setlogin(false)
     }
@@ -63,10 +62,10 @@ return ( <>
     {login?  <div className={style.divicon}><HiOutlineBellAlert /> <div style={{width:'30px',position:'relative'}}><img src='./assets/Ellipse 2.svg' alt=''/>
     <div className={style.Dashboard}>
         <ul className={style.navBord}>
-            <li> <MdManageAccounts /> <Link>Manage account</Link>  </li>
-            <li> <GiAirplaneDeparture /> <Link to={'/mytrips'}>My trips</Link>     </li>
-            <li> <LuWallet />      <Link> Reward and wallet</Link>     </li>
-            <li> <IoIosLogOut /> <Link  onClick={LogOut}>Sign out</Link></li>
+            <li className='flex justify-between'> <MdManageAccounts /> <Link>Manage account</Link>  </li>
+            <li className='flex justify-between'> <GiAirplaneDeparture /> <Link to={'/mytrips'}>My trips</Link>     </li>
+            <li className='flex justify-between'> <LuWallet />      <Link> Reward and wallet</Link>     </li>
+            <li className='flex justify-between'> <IoIosLogOut /> <Link  onClick={LogOut}>Sign out</Link></li>
         </ul>
     </div>    
     </div></div>  : <button><Link style={{color:'white'}} to='/signin'>Login</Link></button>
