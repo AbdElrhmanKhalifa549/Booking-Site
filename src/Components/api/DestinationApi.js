@@ -14,26 +14,12 @@ const options = {
 
 
 export const DestinationApi = async () => {
-   if(!localStorage.getItem('dest')){ 
   try {          
       const {data : {data}} = await axios.request(options)
             
-            if(data.length >=1){
-            localStorage.setItem('dest',JSON.stringify(data))}
+            return data
             
             } catch (error) {
             return error
-            }}
+            }
 };
-
-// export  const DestinationApi = async() => {
-
-    
-//     try {
-//       const {data : {data}} = await axios.request(options);
-//       return data
-//     } catch (error) {
-//       return error
-//     }
-
-// }

@@ -7,7 +7,7 @@ import { DataApi } from "../main/Layout";
 
 import { useNavigate } from "react-router-dom";
 
-export const SearchBar = ({ setLoading }) => {
+export const SearchBar = ( ) => {
   const { getDestinat, Destinat, setDestinat } = useContext(DataApi);
 
   const [destination, setdestination] = useState();
@@ -19,9 +19,9 @@ export const SearchBar = ({ setLoading }) => {
     .toString()}-${(nowData.getMonth() + 1).toString() > 9
     ? (nowData.getMonth() + 1).toString()
     : "0" +
-      (nowData.getMonth() + 1).toString()}-${nowData.getDate().toString() >= 10
+      (nowData.getMonth() + 1).toString()}-${nowData.getDate().toString() > 9
     ? (nowData.getDate() + 1).toString()
-    : (Number("0" + nowData.getDate()) + 1).toString()}`;
+    : "0" +( nowData.getDate() + 1).toString()}`;
   let mainDataDeparture = `${nowData
     .getFullYear()
     .toString()}-${(nowData.getMonth() + 1).toString() > 9
@@ -29,7 +29,7 @@ export const SearchBar = ({ setLoading }) => {
     : "0" +
       (nowData.getMonth() + 1).toString()}-${nowData.getDate().toString() >= 10
     ? (nowData.getDate() + 2).toString()
-    : (Number("0" + nowData.getDate()) + 2).toString()}`;
+    : "0" + (nowData.getDate() + 2).toString()}`;
 
   const getDestinatKey = e => {
     const x = e.target.value;
@@ -54,7 +54,6 @@ export const SearchBar = ({ setLoading }) => {
   let dateBack = e => {
     if (e.target.value <= mainDataArrival) {
       e.target.value = mainDataArrival;
-    } else {
     }
   };
 
@@ -64,10 +63,10 @@ export const SearchBar = ({ setLoading }) => {
   }
   function handelForm(e) {
     e.preventDefault();
-    hadlepath();
+    handelpath();
   }
 
-  let hadlepath = () => navigate("/search");
+  let handelpath = () => navigate("/search");
 
   return (
     <form className={style.SearchContainer} onSubmit={handelForm}>
@@ -81,7 +80,7 @@ export const SearchBar = ({ setLoading }) => {
           value={destination}
         
           onChange={getDestinatKey}
-          defaultValue={getDestinat[0].city_name}
+          defaultValue={getDestinat[0]?.city_name}
           placeholder="Where are you going?"
         />
         <datalist id="city" name="city">

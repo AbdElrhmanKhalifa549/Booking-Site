@@ -56,24 +56,26 @@ const [userTrips,setuserTrips] =useState(JSON.parse(localStorage.getItem("UserNo
       bed:e,
     };
 
-    if(userTrips.trips && (!userTrips.trips.includes(hotelTrips)) ){
-      userTrips.trips.push(hotelTrips)
+    if(userTrips.trips){
+    if(!userTrips.trips.includes(hotelTrips)) {
+       userTrips.trips.push(hotelTrips)
       localStorage.setItem('UserNow',JSON.stringify(userTrips))
       if(userTrips.trips){
         navgat()
       }
-      console.log('yes', userTrips)
+      console.log('yes', userTrips)}
     }else{
       const arrayTrips=[]
       arrayTrips.push(hotelTrips)
+      if(arrayTrips.length >= 1){
       setuserTrips((prevs)=>({...prevs,trips : arrayTrips}))
       localStorage.setItem("UserNow",JSON.stringify(userTrips))
+      console.log('no',userTrips.trips)
       if(userTrips.trips){
         navgat()
       }
       
-      console.log('no',userTrips)
-    }
+    }}
     }
     //
     const navgat= ()=> navigate('/checkout');

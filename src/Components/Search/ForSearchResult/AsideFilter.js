@@ -121,7 +121,7 @@ export const AsideFilter = ({setinputSearch,setminprice,setmaxprice,budget,setbu
                 className="wd20"
                 type="range"
                 min="0"
-                max="1"
+                max="2"
               />
             </div>
             <div className={style.borederD}>

@@ -43,15 +43,13 @@ export const SearchResult = () => {
   
   useEffect(
     () => {
-      if (!localStorage.getItem("dest")) {
-        DestinationApi();
-      }
+     
       paginationpage();
        handleSearch(Destinat);
     },
-    [Destinat.sort]
+    [Destinat.sort,Destinat.city_name]
   );
-
+console.log (Destinat)
   //get key Sort to Api Sort 
   const getSortkey = e => {
     const x = sortinput.find(item => item.title === e.target.value);

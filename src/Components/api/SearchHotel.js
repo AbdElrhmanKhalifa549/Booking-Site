@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const SearchHotel = async (params , ele)=>{
+export const SearchHotel = async (params)=>{
 const {sort,adults,dest_id,room_qty,dest_type,arrival_date,departure_date,page_number} = params ;
  
 const options = {
